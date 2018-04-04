@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AutoPlayVideo</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="play_error">Play Error!</string>
+    <string name="click_to_restart">Click to try again</string>
+    <string name="no_url">No url</string>
+    <string name="tips_not_wifi">You are currently using the mobile network, the player will continue to consume traffic</string>
+    <string name="tips_not_wifi_confirm">Resume</string>
+    <string name="tips_not_wifi_cancel">Stop play</string>
+</resources>
