@@ -1,2 +1,2 @@
 # AutoPlayVideo
-用mvp模式编写一个仿新浪微博滑动自动播放网络视频
+用mvp模式,RecyclerView编写一个仿新浪微博滑动自动播放网络视频,使用了JC播放器,但是修改了ijkplayer播放器库支持播放https链接
