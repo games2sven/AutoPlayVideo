@@ -97,16 +97,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         //按下home键或者锁屏键退出时关闭正在播放的视频，释放资源
-        if(MyApplication.instance.VideoPlaying!=null)
+        if(MyApplication.getInstance().VideoPlaying!=null)
         {
-            if(MyApplication.instance.VideoPlaying.currentState== JCVideoPlayer.CURRENT_STATE_PLAYING)
+            if(MyApplication.getInstance().VideoPlaying.currentState== JCVideoPlayer.CURRENT_STATE_PLAYING)
             {
 //                MyApplication.getInstance().VideoPlaying.startButton.performClick();
                 JCVideoPlayer.releaseAllVideos();
-            }else if (MyApplication.instance.VideoPlaying.currentState== JCVideoPlayer.CURRENT_STATE_PREPAREING)
+            }else if (MyApplication.getInstance().VideoPlaying.currentState== JCVideoPlayer.CURRENT_STATE_PREPAREING)
             {
                 JCVideoPlayer.releaseAllVideos();
-            }else if(MyApplication.instance.VideoPlaying.currentState== JCVideoPlayer.CURRENT_STATE_PLAYING_BUFFERING_START){
+            }else if(MyApplication.getInstance().VideoPlaying.currentState== JCVideoPlayer.CURRENT_STATE_PLAYING_BUFFERING_START){
                 JCVideoPlayer.releaseAllVideos();
             }
         }

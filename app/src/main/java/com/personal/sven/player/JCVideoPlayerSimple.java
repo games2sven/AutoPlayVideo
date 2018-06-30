@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.personal.sven.autoplayvideo.R;
 
+
 /**
  * Manage UI
  * Created by Nathen

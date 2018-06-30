@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.personal.sven.player.JCVideoPlayer;
 import com.personal.sven.player.JCVideoPlayerStandard;
 
 
@@ -14,12 +15,17 @@ import com.personal.sven.player.JCVideoPlayerStandard;
  */
 public class MyApplication extends Application {
     public static MyApplication instance;
-    public JCVideoPlayerStandard VideoPlaying;
+
+    public JCVideoPlayer VideoPlaying;
 
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
+    }
+
+    public static MyApplication getInstance() {
+        return instance;
     }
 
     public Context getAppContext() {

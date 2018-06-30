@@ -106,23 +106,13 @@ public class DiscoveryListAdapter extends RecyclerView.Adapter<DiscoveryListAdap
         void update() {
             super.update();
 
-//            mVideoPlayer.setUp(
-//                    "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4",
-//                    JCVideoPlayer.SCREEN_LAYOUT_LIST,
-//                    "");
-//            Glide.with(itemView.getContext()).load(
-//                    "http://a4.att.hudong.com/05/71/01300000057455120185716259013.jpg").into(mVideoPlayer.thumbImageView);
-//            https://videodown.zerotech.com/out480/A40ba819eca57c15b4175d7da1fe2d203.mp4?OSSAccessKeyId=9NcSgCCVfxXAbsr6&Expires=1522896893&Signature=yqRUCS%2FJEw1T%2BE4b%2FfYsrJJr3RA%3D
-//            http://video.gedoushijie.com/XvLp9nkAirHvoVf0lEKdvlIdaQI=/lqH7C1Unckgfwj4WuvtM15DMItEA
-//            https://hgskylinetest.oss-cn-shenzhen.aliyuncs.com/shares/videos/628/I2059696277cef3fa90d7b1667ec67daf.mp4?Expires=1522837159&OSSAccessKeyId=LTAIfgMs2rTpuZgY&Signature=TVth2doY%2Bf86NB4ogBUgEaNmn7I%3D
+            //https://wsqncdn.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4?ssig=9b168f928df2f7d47188bd979d826325&time_stamp=1530352758611
             mVideoPlayer.setUp(
-                    "https://hgskylinetest.oss-cn-shenzhen.aliyuncs.com/shares/videos/628/I2059696277cef3fa90d7b1667ec67daf.mp4?Expires=1522837159&OSSAccessKeyId=LTAIfgMs2rTpuZgY&Signature=TVth2doY%2Bf86NB4ogBUgEaNmn7I%3D",
+                    "http://wsqncdn.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4?ssig=9b168f928df2f7d47188bd979d826325&time_stamp=1530352758611",
                     JCVideoPlayer.SCREEN_LAYOUT_LIST,
                     "");
             Glide.with(itemView.getContext()).load(
-                    "https://videodown.zerotech.com/outimg/A40ba819eca57c15b4175d7da1fe2d203.jpg%21Avatar_600?OSSAccessKeyId=9NcSgCCVfxXAbsr6&Expires=1522891554&Signature=GWVAMVt604A1L6J5XA6PtKT13us%3D").into(mVideoPlayer.thumbImageView);
-
-
+                    "http://a4.att.hudong.com/05/71/01300000057455120185716259013.jpg").into(mVideoPlayer.thumbImageView);
         }
     }
 

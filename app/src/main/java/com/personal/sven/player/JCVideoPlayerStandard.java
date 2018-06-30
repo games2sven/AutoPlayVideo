@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -19,7 +20,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.personal.sven.autoplayvideo.R;
+import com.personal.sven.utils.NetUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -82,6 +85,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
                 tinyBackImageView.setVisibility(View.INVISIBLE);
             } else if (currentScreen == SCREEN_WINDOW_TINY) {
                 tinyBackImageView.setVisibility(View.VISIBLE);
+                Log.i("Sven","252525252525");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
             }
@@ -97,6 +101,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
 
     @Override
     public void setUiWitStateAndScreen(int state) {
+        Log.i("Sven"," child setUiWitStateAndScreen "+state);
         super.setUiWitStateAndScreen(state);
         switch (currentState) {
             case CURRENT_STATE_NORMAL:
@@ -107,6 +112,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
                 startDismissControlViewTimer();
                 break;
             case CURRENT_STATE_PLAYING:
+                Log.i("Sven","playing 11111111");
                 changeUiToPlayingShow();
                 startDismissControlViewTimer();
                 break;
@@ -123,6 +129,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
                 bottomProgressBar.setProgress(100);
                 break;
             case CURRENT_STATE_PLAYING_BUFFERING_START:
+                Log.i("Sven","CURRENT_STATE_PLAYING_BUFFERING_START 1111");
                 changeUiToPlayingBufferingShow();
                 break;
         }
@@ -146,6 +153,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
                     }
                     if (!mChangePosition && !mChangeVolume) {
                         onEvent(JCBuriedPointStandard.ON_CLICK_BLANK);
+                        Log.i("Sven","onClickUiToggle 1111 ");
                         onClickUiToggle();
                     }
                     break;
@@ -173,12 +181,13 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
                 return;
             }
             if (currentState == CURRENT_STATE_NORMAL) {
-                if (!url.startsWith("file") && !JCUtils.isWifiConnected(getContext()) && !WIFI_TIP_DIALOG_SHOWED) {
+                if (!url.startsWith("file") && !JCUtils.isWifiConnected(getContext()) && !WIFI_TIP_DIALOG_SHOWED && NetUtils.getNetworkType(mContext) == 4) {
                     showWifiDialog();
                     return;
                 }
                 startPlayLocic();
             } else if (currentState == CURRENT_STATE_AUTO_COMPLETE) {
+                Log.i("Sven","onClickUiToggle 22222 ");
                 onClickUiToggle();
             }
         } else if (i == R.id.surface_container) {
@@ -241,6 +250,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
             if (bottomContainer.getVisibility() == View.VISIBLE) {
                 changeUiToPlayingClear();
             } else {
+                Log.i("Sven","playing 222222");
                 changeUiToPlayingShow();
             }
         } else if (currentState == CURRENT_STATE_PAUSE) {
@@ -256,6 +266,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
                 changeUiToCompleteShow();
             }
         } else if (currentState == CURRENT_STATE_PLAYING_BUFFERING_START) {
+            Log.i("Sven","CURRENT_STATE_PLAYING_BUFFERING_START 22222");
             if (bottomContainer.getVisibility() == View.VISIBLE) {
                 changeUiToPlayingBufferingClear();
             } else {
@@ -315,10 +326,12 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void changeUiToPrepareingClear() {
         switch (currentScreen) {
             case SCREEN_LAYOUT_LIST:
+                Log.i("Sven","5555");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.VISIBLE, View.INVISIBLE, View.VISIBLE, View.INVISIBLE);
                 break;
             case SCREEN_WINDOW_FULLSCREEN:
+                Log.i("Sven","66666");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.VISIBLE, View.INVISIBLE, View.VISIBLE, View.INVISIBLE);
                 break;
@@ -331,11 +344,13 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void changeUiToPlayingShow() {
         switch (currentScreen) {
             case SCREEN_LAYOUT_LIST:
+                Log.i("Sven","77777");
                 setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
                 updateStartImage();
                 break;
             case SCREEN_WINDOW_FULLSCREEN:
+                Log.i("Sven","88888");
                 setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
                 updateStartImage();
@@ -349,10 +364,12 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void changeUiToPlayingClear() {
         switch (currentScreen) {
             case SCREEN_LAYOUT_LIST:
+                Log.i("Sven","99999999");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.VISIBLE);
                 break;
             case SCREEN_WINDOW_FULLSCREEN:
+                Log.i("Sven","1010101010");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.VISIBLE);
                 break;
@@ -365,11 +382,13 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void changeUiToPauseShow() {
         switch (currentScreen) {
             case SCREEN_LAYOUT_LIST:
+                Log.i("Sven","aaaaaaaaaa");
                 setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
                 updateStartImage();
                 break;
             case SCREEN_WINDOW_FULLSCREEN:
+                Log.i("Sven","121212121212");
                 setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
                 updateStartImage();
@@ -383,10 +402,12 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void changeUiToPauseClear() {
         switch (currentScreen) {
             case SCREEN_LAYOUT_LIST:
+                Log.i("Sven","131313131313");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
                 break;
             case SCREEN_WINDOW_FULLSCREEN:
+                Log.i("Sven","1414141414");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
                 break;
@@ -399,10 +420,12 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void changeUiToPlayingBufferingShow() {
         switch (currentScreen) {
             case SCREEN_LAYOUT_LIST:
+                Log.i("Sven","1515151515");
                 setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.INVISIBLE,
                         View.VISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
                 break;
             case SCREEN_WINDOW_FULLSCREEN:
+                Log.i("Sven","16161616");
                 setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.INVISIBLE,
                         View.VISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
                 break;
@@ -415,11 +438,13 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void changeUiToPlayingBufferingClear() {
         switch (currentScreen) {
             case SCREEN_LAYOUT_LIST:
+                Log.i("Sven","17171717");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.VISIBLE, View.INVISIBLE, View.INVISIBLE, View.VISIBLE);
                 updateStartImage();
                 break;
             case SCREEN_WINDOW_FULLSCREEN:
+                Log.i("Sven","18181818");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.VISIBLE, View.INVISIBLE, View.INVISIBLE, View.VISIBLE);
                 updateStartImage();
@@ -433,11 +458,13 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void changeUiToCompleteShow() {
         switch (currentScreen) {
             case SCREEN_LAYOUT_LIST:
+                Log.i("Sven","19191919");
                 setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
                         View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.INVISIBLE);
                 updateStartImage();
                 break;
             case SCREEN_WINDOW_FULLSCREEN:
+                Log.i("Sven","20202020");
                 setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
                         View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.INVISIBLE);
                 updateStartImage();
@@ -451,11 +478,13 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void changeUiToCompleteClear() {
         switch (currentScreen) {
             case SCREEN_LAYOUT_LIST:
+                Log.i("Sven","2121212121");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.VISIBLE,
                         View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.VISIBLE);
                 updateStartImage();
                 break;
             case SCREEN_WINDOW_FULLSCREEN:
+                Log.i("Sven","bbbbbbbbbb");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.VISIBLE,
                         View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.VISIBLE);
                 updateStartImage();
@@ -469,11 +498,13 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void changeUiToError() {
         switch (currentScreen) {
             case SCREEN_LAYOUT_LIST:
+                Log.i("Sven","232323232323");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.VISIBLE, View.INVISIBLE);
                 updateStartImage();
                 break;
             case SCREEN_WINDOW_FULLSCREEN:
+                Log.i("Sven","2424242424");
                 setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
                         View.INVISIBLE, View.INVISIBLE, View.VISIBLE, View.INVISIBLE);
                 updateStartImage();
@@ -571,8 +602,8 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         super.showVolumDialog(deltaY, volumePercent);
         if (mVolumeDialog == null) {
             View localView = LayoutInflater.from(getContext()).inflate(R.layout.jz_dialog_volume, null);
-            View content = localView.findViewById(R.id.content);
-            content.setRotation(90);
+//            View content = localView.findViewById(R.id.content);
+//            content.setRotation(90);
             mDialogVolumeProgressBar = ((ProgressBar) localView.findViewById(R.id.volume_progressbar));
             mVolumeDialog = new Dialog(getContext(), R.style.jz_style_dialog_progress);
             mVolumeDialog.setContentView(localView);

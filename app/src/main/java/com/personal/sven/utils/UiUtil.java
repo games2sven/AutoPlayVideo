@@ -13,7 +13,7 @@ import com.personal.sven.autoplayvideo.MyApplication;
 public class UiUtil {
 
     public static Context getContext() {
-        return MyApplication.instance.getAppContext();
+        return MyApplication.getInstance().getAppContext();
     }
 
     /**

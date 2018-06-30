@@ -221,7 +221,7 @@ public class JCMediaManager implements IMediaPlayer.OnPreparedListener, IMediaPl
 
 
     private class FuckBean {
-        String url;
+        String              url;
         Map<String, String> mapHeadData;
         boolean             looping;
 
